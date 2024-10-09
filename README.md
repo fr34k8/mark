@@ -262,7 +262,15 @@ some long code block
 Block Quotes are converted to Confluence Info/Warn/Note box when the following conditions are met
 
 1. The BlockQuote is on the root level of the document (not nested)
-1. The first line of the BlockQuote contains one of the following patterns `Info/Warn/Note`
+1. The first line of the BlockQuote contains one of the following patterns `Info/Warn/Note` or [Github MD Alerts style](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) `[!NOTE]/[!TIP]/[!IMPORTANT]/[!WARNING]/[!CAUTION]`
+
+| Github Alerts | Confluence |
+|---------------|------------|
+| Tip (green lightbulb)   | Tip (green checkmark in circle) |
+| Note (blue I in circle) | Info (blue I in circle) |
+| Important (purple exclamation mark in speech bubble) | Info (blue I in circle) |
+| Warning (yellow exclamation mark in triangle) | Note (yellow exclamation mark in triangle) |
+| Caution (red exclamation mark in hexagon) | Warning (red exclamation mark in hexagon) |
 
 In any other case the default behaviour will be resumed and html `<blockquote>` tag will be used
 
@@ -767,7 +775,7 @@ USAGE:
    mark [global options] 
 
 VERSION:
-   11.0.1
+   11.2.0
 
 DESCRIPTION:
    Mark is a tool to update Atlassian Confluence pages from markdown. Documentation is available here: https://github.com/kovetskiy/mark
@@ -780,6 +788,7 @@ GLOBAL OPTIONS:
    --drop-h1, --h1_drop                          don't include the first H1 heading in Confluence output. (default: false) [$MARK_H1_DROP]
    --strip-linebreaks, -L                        remove linebreaks inside of tags, to accomodate non-standard Confluence behavior (default: false) [$MARK_STRIP_LINEBREAK]
    --title-from-h1, --h1_title                   extract page title from a leading H1 heading. If no H1 heading on a page exists, then title must be set in the page metadata. (default: false) [$MARK_H1_TITLE]
+   --title-append-generated-hash                 appends a short hash generated from the path of the page (space, parents, and title) to the title (default: false) [$MARK_TITLE_APPEND_GENERATED_HASH]
    --minor-edit                                  don't send notifications while updating Confluence page. (default: false) [$MARK_MINOR_EDIT]
    --version-message value                       add a message to the page version, to explain the edit (default: "") [$MARK_VERSION_MESSAGE]
    --color value                                 display logs in color. Possible values: auto, never. (default: "auto") [$MARK_COLOR]
